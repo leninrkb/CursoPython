@@ -283,3 +283,20 @@
 
 # print(list_3)
 
+
+
+# squares = [x ** 2 for x in range(20)]
+# print(squares)
+
+
+# pares = [x for x in squares if x % 2 == 0 ]
+# print(pares)
+
+
+# creo un tablero de ajedrez2 xd
+board = []
+
+for i in range(8):
+    row = [0 for i in range(8)]
+    board.append(row)
+print(board)
