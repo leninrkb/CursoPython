@@ -212,16 +212,16 @@
 # my_list.reverse()
 # print(my_list)
 
-# # alg burbuja, solucion mia(la mejor obviamente)
-# ls = [12,4,5,3,6,7,83,9,2]
-# s=0
-# for i in range(len(ls)):
-#     for j in range(len(ls)-1):
-#         s+=1
-#         if ls[j]>ls[j+1]:
-#             ls[j], ls[j+1] = ls[j+1], ls[j]
+# alg burbuja, solucion mia(la mejor obviamente)
+ls = [12,4,5,3,6,7,83,9,2]
+s=0
+for i in range(len(ls)):
+    for j in range(len(ls)-1):
+        s+=1
+        if ls[j]>ls[j+1]:
+            ls[j], ls[j+1] = ls[j+1], ls[j]
 
-# print(ls,s)
+print(ls,s)
 
 
 # #solucion del curso

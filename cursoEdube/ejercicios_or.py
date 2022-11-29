@@ -1,6 +1,4 @@
 # objetos
-import random
-
 
 class Utils():
     numero = ''
@@ -14,17 +12,16 @@ class Utils():
 
 
 # funcionalidad - ejecucion
-def ejercicio1():
-    obj = Utils()
-    obj.ingresarNumero()
-    lon = obj.logitudNumero()
+obj = Utils()
+obj.ingresarNumero()
+lon = obj.logitudNumero()
 
-    for i in range(lon):
-        c = obj.numero
-        if not c[i] in obj.vec:
-            n = c.count(c[i])
-            print(c[i], 'aparece', n, 'veces')
-            obj.vec.append(c[i])
+for i in range(lon):
+    c = obj.numero
+    if not c[i] in obj.vec:
+        n = c.count(c[i])
+        print(c[i], 'aparece', n, 'veces')
+        obj.vec.append(c[i])
 
 
 # -----------------------------------------------------------------------
@@ -32,7 +29,7 @@ def ejercicio1():
 
 # objetos
 class Vector():
-    def ingresarVector():
+    def ingresarVector(self):
         # esta funcion se encargara unicamente de ingresar un vector y me lo retorna
         sn = 's'
         vec = []
@@ -45,19 +42,20 @@ class Vector():
 
 
 # ejecucion
-def ejercicio2():
-    obj = Vector()
-    vec1 = obj.ingresarVector()
-    vec2 = obj.ingresarVector()
 
-    print(vec1)
-    print(vec2)
-    print(set(vec1) & set(vec2))
+obj = Vector()
+vec1 = obj.ingresarVector()
+vec2 = obj.ingresarVector()
+
+print(vec1)
+print(vec2)
+print(set(vec1) & set(vec2))
 
 
 # -------------------------------------------------------------------
 # ejercicio 3
 
+import random
 
 class Vector2():
 
@@ -81,16 +79,16 @@ class Vector2():
 
 
 # ejecucion
-def ejercicio3():
-    obj = Vector2()
-    vec = obj.generarVectorRandom()
-    c = obj.cifraComparar()
-    seCumple = True
 
-    for i in range(len(vec)):
-        if not vec[i] < c:
-            seCumple = False
-            break
+obj = Vector2()
+vec = obj.generarVectorRandom()
+c = obj.cifraComparar()
+seCumple = True
 
-    obj.comprobarCondicion(vec,c,seCumple)
+for i in range(len(vec)):
+    if not vec[i] < c:
+        seCumple = False
+        break
+
+obj.comprobarCondicion(vec,c,seCumple)
 
