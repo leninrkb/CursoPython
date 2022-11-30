@@ -1,11 +1,11 @@
-# vector = [12,4,5,3,6,7,83,9,2]
-# itera = 0
-# for i in range(len(vector)):
-#     for j in range(len(vector)-1):
-#         itera+=1
-#         if vector[j]>vector[j+1]:
-#             vector[j], vector[j+1] = vector[j+1], vector[j]
-# print(vector,itera)
+vector = [12,4,5,3,6,7,83,9,2]
+itera = 0
+for i in range(len(vector)):
+    for j in range(len(vector)-1):
+        itera+=1
+        if vector[j]>vector[j+1]:
+            vector[j], vector[j+1] = vector[j+1], vector[j]
+print(vector,itera)
 
 
 
