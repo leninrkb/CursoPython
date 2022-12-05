@@ -3,14 +3,11 @@
 class Utils():
     numero = ''
     vec = []
-
     def ingresarNumero(self):
         self.numero = input('ingrese el numero: ')
 
     def logitudNumero(self):
         return len(self.numero)
-
-
 # funcionalidad - ejecucion
 obj = Utils()
 obj.ingresarNumero()
