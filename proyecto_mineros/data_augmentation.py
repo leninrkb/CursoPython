@@ -4,9 +4,9 @@ import os
 import matplotlib.pyplot as plt
 
 transform = A.Compose([
-    A.RandomRotate90()
-    A.Flip()
-    A.Transpose()
+    A.RandomRotate90(),
+    A.Flip(),
+    A.Transpose(),
     A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.1, rotate_limit=45)
 ])
 
@@ -23,11 +23,11 @@ for img in os.listdir(path):
     while(count<5):
         augmented_image = transform(image=img_array)['image']
         Datos='{}/img_{}_{}.jpg'.format(OUT_PATH,count,c2)
-        cv2.imwrite(Datos augmented_image)
+        cv2.imwrite(Datos, augmented_image)
         count+=1
         c2+=1
         
-print('total img ='c2)
+print('total img =',c2)
         
 # count=0
 # while(count<100):
