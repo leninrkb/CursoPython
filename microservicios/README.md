@@ -12,8 +12,12 @@ conda activate python_microservicios
 ```
 pip install Flask
 ```
+## 4 Install flask-cors
+```
+pip install Flask-Cors
+```
 
-## 4 Install mysql connector
+## 5 Install mysql connector
 ```
 pip install PyMySQL
 ```
