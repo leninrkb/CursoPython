@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, make_response
 import business as bs
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 @app.route('/get_empleados')
 def getEmpleados():
     try:
