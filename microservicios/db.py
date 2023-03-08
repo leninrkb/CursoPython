@@ -1,15 +1,17 @@
 import pymysql
 
-class Database:
-    def __init__(self):
-        try:
-            self.connection = pymysql.connect(
-                host='localhost',#ip
-                user='root',
-                password='',
-                db='vue'
-            )
-            self.cursor = self.connection.connect()
-            print(f'conexion establecida')
-        except Exception as e:
-            print(f'error: {e}')
+def setupConnection():
+    try:
+        connection = pymysql.connect(
+            host='localhost',
+            user='root',
+            password='',
+            database='vue'
+        )
+        cursor = connection.cursor()
+        print(f'conexion establecida {type(cursor)}')
+        return cursor
+    except Exception as e:
+        print(f'error db -> setupConnection(): {e}')
+    
+

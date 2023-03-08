@@ -1,7 +1,14 @@
-from db import Database
+import db
 
-_db = Database()
+global CURSOR
+CURSOR = db.setupConnection()
 
-def getEmpleadosSuscritos():
-    return 'lista de empleados suscritos devuelta desde la capa de negocio'
+def getEmpleados(cursor=CURSOR):
+    sql = 'select * from empleado'
+    try:
+        cursor.execute(sql)
+        empleados = cursor.fetchall()
+        return empleados
+    except Exception as e:
+      print(f'error business -> getEmpleados(): {e}')
     

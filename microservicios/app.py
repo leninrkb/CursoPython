@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, jsonify, make_response
 import business as bs
 
 app = Flask(__name__)
-@app.route('/get_saludo')
-def getSaludo():
-    return 'today is gonna be a great day!'
-
-@app.route('/empleados_suscritos')
-def getEmpleadosSuscritos():
-    return bs.getEmpleadosSuscritos()
+@app.route('/get_empleados')
+def getEmpleados():
+    try:
+        response = make_response(jsonify(bs.getEmpleados()),200)
+        return response
+    except Exception as e:
+        print(f'error app -> getEmpleados(): {e}')
+        return make_response('error', 500)
