@@ -24,7 +24,7 @@ class ModelPelicula:
         try:
             coneccion = get_coneccion()
             with coneccion.cursor() as cursor:
-                cursor.execute(f'select id, nombre, duracion, fecha_estreno from pelicula where id = %s',(id,))  
+                cursor.execute('select id, nombre, duracion, fecha_estreno from pelicula where id = %s',(id,))  
                 result = cursor.fetchone()     
                 if result != None:
                     pelicula = Pelicula(
@@ -33,5 +33,54 @@ class ModelPelicula:
                     pelicula = pelicula.toJSON()
             coneccion.close()
             return pelicula
+        except Exception as e:
+            raise e
+    @classmethod
+    def add_pelicula(self,pelicula:Pelicula):
+        try:
+            coneccion = get_coneccion()
+            with coneccion.cursor() as cursor:
+                cursor.execute('''
+                    insert into pelicula(id, nombre, duracion, fecha_estreno)
+                    values(%s,%s,%s,%s) 
+                ''',(pelicula.id, pelicula.nombre, pelicula.duracion, pelicula.fecha_estreno,))  
+                filas_afectadas = cursor.rowcount
+                coneccion.commit()
+            coneccion.close()
+            return filas_afectadas
+        except Exception as e:
+            raise e
+    @classmethod
+    def del_pelicula(self,id):
+        try:
+            coneccion = get_coneccion()
+            with coneccion.cursor() as cursor:
+                cursor.execute(' delete from pelicula where id = %s ',(id,))  
+                filas_afectadas = cursor.rowcount
+                if filas_afectadas == 1:
+                    coneccion.commit()
+                else:
+                    filas_afectadas = 0
+            coneccion.close()
+            return filas_afectadas
+        except Exception as e:
+            raise e
+    @classmethod
+    def update_pelicula(self,pelicula:Pelicula):
+        try:
+            coneccion = get_coneccion()
+            with coneccion.cursor() as cursor:
+                cursor.execute('''
+                    update pelicula
+                    set nombre=%s, duracion=%s, fecha_estreno=%s
+                    where id=%s
+                ''',(pelicula.nombre, pelicula.duracion, pelicula.fecha_estreno,pelicula.id))  
+                filas_afectadas = cursor.rowcount
+                if filas_afectadas == 1:
+                    coneccion.commit()
+                else:
+                    filas_afectadas = 0
+            coneccion.close()
+            return filas_afectadas
         except Exception as e:
             raise e

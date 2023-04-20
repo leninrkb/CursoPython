@@ -1,5 +1,6 @@
 from flask import Flask
 from config import config
+from flask_cors import CORS
 #rutas
 from routes import r_pelicula
 
@@ -7,6 +8,7 @@ def pagina_no_encontrada(error):
     return '<h1>Pagina no funcionar, hombre triste :(</h1>',404
 
 app = Flask(__name__)
+CORS(app, resources={'*':{'origins':'http://localhost:8080'}})
 if __name__ == '__main__':
     app.config.from_object(config['development'])
     # blueprint
