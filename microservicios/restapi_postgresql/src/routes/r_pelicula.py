@@ -11,4 +11,15 @@ def get_peliculas():
         peliculas = ModelPelicula.get_peliculas()
         return jsonify(peliculas)
     except Exception as e:
-        return jsonify({'error':str(e)}),500
+        return jsonify({'error get_peliculas':str(e)}),500
+    
+@main.route('/<id>')
+def get_pelicula(id):
+    try:
+        pelicula = ModelPelicula.get_pelicula(id)
+        if pelicula != None:
+            return pelicula
+        else:
+            return jsonify({}),404
+    except Exception as e:
+        return jsonify({'error get_pelicula':str(e)}),500
